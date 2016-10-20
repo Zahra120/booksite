@@ -4,20 +4,20 @@ var pug = require('pug');
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(request, response) {
   console.log('Requesting home page...');
-  response.send(pug.renderFile(__dirname + '/views/index.pug', {}));
+  response.send(pug.renderFile('views/index.pug', {}));
   // response.sendFile(__dirname + '/index.html');
 });
-app.get('books/if-you-could-mine', function(request, response) {
-  console.log('Requesting contact page....');
-  response.send(pug.renderFile(__dirname + '/views/books/if-you-could-mine.pug', {}));
+app.get('/books/if-you-could-mine', function(request, response) {
+  console.log('Requesting books page....');
+  response.send(pug.renderFile('views/books/if-you-could-mine.pug', {}));
 });
-app.get('books/the-little-prince', function(request, response) {
-  console.log('Requesting contact page....');
-  response.send(pug.renderFile(__dirname + '/views/books/the-little-prince.pug', {}));
+app.get('/books/red', function(request, response) {
+  console.log('Requesting books page....');
+  response.send(pug.renderFile('views/books/red.pug', {}));
 });
-app.get('books/the-girl-on-the-train', function(request, response) {
-  console.log('Requesting contact page....');
-  response.send(pug.renderFile(__dirname + '/views/books/the-girl-on-the-train.pug', {}));
+app.get('/books/the-girl-on-train', function(request, response) {
+  console.log('Requesting books page....');
+  response.send(pug.renderFile('views/books/the-girl-on-train.pug', {}));
 });
 
 
