@@ -7,7 +7,7 @@ var sequelize = new Sequelize('zahra120', 'zahra120', '' , {dialect: 'postgres'}
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('public'));
 
 // Our model definition:
 var Book = sequelize.define('book', {
@@ -19,7 +19,7 @@ var Book = sequelize.define('book', {
 
 app.get('/', function(request, response) {
     Book.findAll().then(function(books){
-      response.send(pug.renderFile('views/book/index0.pug', {books: books}));
+      response.send(pug.renderFile('views/book/index.pug', { books: books }));
 
    });
 
@@ -27,7 +27,13 @@ app.get('/', function(request, response) {
 });
 app.get('/book/new', function(request, response) {
   console.log('Requesting home page...');
-  response.send(pug.renderFile('views/book/new.pug', {}));
+  response.send(pug.renderFile('views/book/new.pug'));
+});
+app.get('/book/:id', function(request,response){
+   Book.findById(request.params.id).then(function(book){
+      response.send(pug.renderFile('views/show/red.pug'),{ book: book  });
+   });
+
 });
 app.post('/book', function(request, response){
    console.log(request.body);
