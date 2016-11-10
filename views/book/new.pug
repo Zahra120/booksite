@@ -2,17 +2,20 @@ extends ../application.pug
 block content
 
 
+
 	.container
 		.row
-			.col-
-				form(class="form-inline" action="/users" method="POST")
+			.col-xs-8.col-xs-offset-4
+
+
+				form(class="form-inline" action="/book" method="POST")
 					.form-group
-						label(for="exampleInputName2") Title
-						input(type="text" class="form-control" id="exampleInputName2")
+						label(for="exampleInputName2" class="col-sm-3") Title
+						input(type="text" class="form-control col-sm-9" id="exampleInputName2" name="title")
 
 					.form-group
-						label(for="exampleInputAuthor2") Author
-						input(type="text" class="form-control" id="exampleInputLastname2")
+						label(for="exampleInputAuthor2" class="col-sm-3") Author
+						input(type="text" class="form-control col-sm-9" id="exampleInputLastname2" name="author")
 
-					textarea(class="form-control" rows="3")
+					textarea(class="form-control" rows="3" name="text")
 					button(type="submit" class="btn btn-default") add book
