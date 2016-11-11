@@ -25,16 +25,19 @@ app.get('/', function(request, response) {
 
 
 });
+
 app.get('/book/new', function(request, response) {
   console.log('Requesting home page...');
   response.send(pug.renderFile('views/book/new.pug'));
 });
+
 app.get('/book/:id', function(request,response){
    Book.findById(request.params.id).then(function(book){
-      response.send(pug.renderFile('views/show/red.pug'),{ book: book  });
+      response.send(pug.renderFile('views/book/show.pug',{ book: book  }));
    });
 
 });
+
 app.post('/book', function(request, response){
    console.log(request.body);
    Book.create(request.body).then(function(){
